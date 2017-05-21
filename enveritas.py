@@ -29,7 +29,6 @@ def performance_measure(df):
 	performance = list()
 	fail = ['endosulfan', 'gramaxon', 'paraquat', 'preglone', 'parathion', 'terbufos', 'thiodan', 'vidate']
 	for index, row in df.iterrows():
-		# print row["c1"], row["c2"]
 		if row["uses_chemicals"] == 0:
 			performance.append("NA")
 		else:
@@ -60,7 +59,9 @@ if __name__ == "__main__":
 	df = pd.read_csv(path)
 	#adds a new column "survey_length" 
 	df = survey_length(df)
+	#adds a boolean column "shortest" that represents whether or not the survey is among the 10% of shortest surveys in the dataset.
 	df = percent_shortest(df)
+	#adds a column "performance" that represents the farmer's performance on the "No Banned Pesticides" criterion
 	df = performance_measure(df)
 	df.to_csv('out.csv', sep=',')
 
