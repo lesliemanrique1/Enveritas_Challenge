@@ -21,7 +21,7 @@ def percent_shortest(df,perc=.10):
 	    if x in sorted_percentile:
 	        return True
 	    return False
-	df["Shortest"] = map(matchesPercentile,df["survey_length"])
+	df["shortest"] = map(matchesPercentile,df["survey_length"])
 	return df
 
 
